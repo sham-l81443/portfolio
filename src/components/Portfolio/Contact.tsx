@@ -33,7 +33,7 @@ const Contact = () => {
       icon: MapPin,
       title: "Location",
       value: "Kannur, Kerala, India",
-      description: "Open to remote work"
+      description: ""
     }
   ];
 
