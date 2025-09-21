@@ -65,9 +65,9 @@ const Navigation = () => {
             {/* Logo */}
             <div className="font-display text-2xl font-bold">
               <span className="bg-gradient-primary bg-clip-text text-transparent">
-                Dev
+              Shameel K
               </span>
-              <span className="text-foreground">Portfolio</span>
+              <span className="text-foreground"> </span>
             </div>
 
             {/* Desktop Navigation */}
@@ -83,12 +83,6 @@ const Navigation = () => {
                 </button>
               ))}
               
-              <Button 
-                onClick={() => scrollToSection('#contact')}
-                className="bg-gradient-primary text-primary-foreground hover:shadow-glow transition-all duration-300"
-              >
-                Hire Me
-              </Button>
             </div>
 
             {/* Mobile Menu Button */}

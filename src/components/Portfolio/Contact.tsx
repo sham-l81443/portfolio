@@ -12,55 +12,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const formRef = useRef<HTMLDivElement>(null);
   const contactInfoRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo([formRef.current, contactInfoRef.current], {
-        opacity: 0,
-        y: 50
-      }, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.3,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        }
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Simulate form submission
-    toast({
-      title: "Message sent!",
-      description: "Thank you for your message. I'll get back to you soon.",
-    });
-    
-    setFormData({ name: "", email: "", message: "" });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
 
   const contactInfo = [
     {
@@ -73,7 +27,7 @@ const Contact = () => {
       icon: Phone,
       title: "Phone",
       value: "+91 6238830867",
-      description: "Available Mon-Fri 9AM-6PM"
+      // description: "Available Mon-Fri 9AM-6PM"
     },
     {
       icon: MapPin,
@@ -98,62 +52,9 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-1 gap-12 items-start">
           {/* Contact Form */}
-          <Card ref={formRef} className="p-8 bg-glass-bg backdrop-blur-sm border border-glass-border">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  Name
-                </label>
-                <Input
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Your full name"
-                  required
-                  className="bg-background/50 border-border focus:border-primary/50"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  Email
-                </label>
-                <Input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="your.email@example.com"
-                  required
-                  className="bg-background/50 border-border focus:border-primary/50"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  Message
-                </label>
-                <Textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell me about your project or just say hello..."
-                  rows={6}
-                  required
-                  className="bg-background/50 border-border focus:border-primary/50 resize-none"
-                />
-              </div>
-              
-              <Button 
-                type="submit"
-                className="w-full bg-gradient-primary text-primary-foreground hover:shadow-glow transition-all duration-300 py-6 text-lg font-semibold"
-              >
-                Send Message
-              </Button>
-            </form>
-          </Card>
+
 
           {/* Contact Information */}
           <div ref={contactInfoRef} className="space-y-6">
@@ -169,35 +70,18 @@ const Contact = () => {
                   
                   <div>
                     <h3 className="font-semibold text-lg text-foreground mb-1">
-                      {info.title}
+                      {info?.title}
                     </h3>
                     <p className="text-primary font-medium mb-1">
-                      {info.value}
+                      {info?.value}
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      {info.description}
+                      {info?.description}
                     </p>
                   </div>
                 </div>
               </Card>
             ))}
-            
-            {/* Call to Action */}
-            <Card className="p-8 bg-gradient-primary text-primary-foreground">
-              <h3 className="font-display text-2xl font-bold mb-4">
-                Ready to start your project?
-              </h3>
-              <p className="text-primary-foreground/90 mb-6 leading-relaxed">
-                I'm always excited to work on new challenges and bring innovative ideas to life. 
-                Let's discuss how we can create something amazing together.
-              </p>
-              <Button 
-                variant="secondary"
-                className="bg-background text-foreground hover:bg-background/90"
-              >
-                Schedule a Call
-              </Button>
-            </Card>
           </div>
         </div>
       </div>

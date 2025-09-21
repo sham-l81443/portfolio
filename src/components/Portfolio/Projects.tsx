@@ -16,18 +16,18 @@ const Projects = () => {
       title: "ConfGo – Event Management Platform",
       description: "Developed core modules for event browsing, registration, billing, and checkout using React and TypeScript. Built reusable UI components with Tailwind CSS, MUI, and shadcn/ui for a scalable design system.",
       technologies: ["React", "TypeScript", "Tailwind CSS", "MUI", "shadcn/ui", "Zustand", "React Hook Form"],
-      image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=500&h=300&fit=crop",
+      image: "/CONFGO.png",
       github: "#",
-      live: "#",
+      live: "https://confgo.com",
       featured: true
     },
     {
       title: "CRM Application for Debt Settlement",
       description: "Developed core UI modules for U.S.-based CRM using React and TypeScript, including lead listings, detail views, email workflows, and bank detail rendering with REST and GraphQL API integration.",
       technologies: ["React", "TypeScript", "Redux", "GraphQL", "Express.js", "shadcn/ui"],
-      image: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=500&h=300&fit=crop",
+      image: "/crm.png",
       github: "#",
-      live: "#",
+      live: false,
       featured: true
     },
     {
@@ -36,16 +36,16 @@ const Projects = () => {
       technologies: ["React", "Bootstrap", "React Query", "React Hook Form", "REST API"],
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop",
       github: "#",
-      live: "#",
+      live: false,
       featured: false
     },
     {
       title: "PhyMe Learning – LMS Platform",
       description: "Built a full-stack Learning Management System from scratch using React, Next.js, and TypeScript with dynamic content system, quizzes, and note-taking features. Currently in development.",
       technologies: ["React", "Next.js", "TypeScript", "Zustand", "React Query", "Express.js", "Prisma", "PostgreSQL"],
-      image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=500&h=300&fit=crop",
+      image: "/phymelearning.png",
       github: "#",
-      live: "#",
+      live: "https://phymelearning.com",
       featured: false
     }
   ];
@@ -95,13 +95,6 @@ const Projects = () => {
                 project.featured ? 'md:col-span-2 lg:col-span-1' : ''
               }`}
             >
-              {project.featured && (
-                <div className="absolute top-4 left-4 z-20">
-                  <span className="px-3 py-1 bg-gradient-primary text-primary-foreground text-xs font-semibold rounded-full">
-                    Featured
-                  </span>
-                </div>
-              )}
               
               <div className="relative overflow-hidden">
                 <img 
@@ -114,20 +107,21 @@ const Projects = () => {
                 {/* Project Links Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="flex gap-4">
-                    <Button
+                    {/* <Button
                       size="sm"
                       className="bg-background/90 text-foreground hover:bg-primary hover:text-primary-foreground backdrop-blur-sm"
                     >
                       <Github className="h-4 w-4 mr-2" />
                       Code
-                    </Button>
-                    <Button
+                    </Button> */}
+                 { project.live && <Button
+                      onClick={() => window.open(project?.live as string, "_blank")}
                       size="sm"
                       className="bg-background/90 text-foreground hover:bg-primary hover:text-primary-foreground backdrop-blur-sm"
                     >
                       <ExternalLink className="h-4 w-4 mr-2" />
                       Live Demo
-                    </Button>
+                    </Button>}
                   </div>
                 </div>
               </div>

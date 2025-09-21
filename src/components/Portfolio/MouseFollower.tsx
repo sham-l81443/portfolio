@@ -31,7 +31,7 @@ const MouseFollower = () => {
         if (glowRef.current) {
           glowRef.current.style.transform = `translate(${x - 25}px, ${y - 25}px)`;
         }
-      }, 150);
+      }, 100);
     };
 
     const handleMouseEnter = () => {

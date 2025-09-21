@@ -113,7 +113,7 @@ const Skills = () => {
               <div className="relative z-10">
                 <div className="flex justify-between items-center mb-3">
                   <h3 className="font-semibold text-foreground">{skill.name}</h3>
-                  <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                  {/* <span className="text-sm text-muted-foreground">{skill.level}%</span> */}
                 </div>
                 
                 <div className="mb-3">
